@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SIPAT - Surat Permohonan Absen & Tata Usaha</title>
+    <title>Dont Forget - Surat Permohonan Absen & Tata Usaha</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <style>
@@ -26,10 +26,10 @@
         }
     </style>
 </head>
-<body class="bg-gray-100 min-h-screen text-gray-800" x-data="sipatApp()">
+<body class="bg-gray-100 min-h-screen text-gray-800" x-data="dontForgetApp()">
     <div class="container mx-auto p-4 md:p-8 no-print">
         <header class="mb-8">
-            <h1 class="text-3xl font-bold text-blue-600">SIPAT</h1>
+            <h1 class="text-3xl font-bold text-blue-600">Dont Forget</h1>
             <p class="text-gray-600 font-medium">Sistem Informasi Permohonan Absen & Tata Usaha</p>
         </header>
 
@@ -221,7 +221,7 @@
     </div>
 
     <script>
-        function sipatApp() {
+        function dontForgetApp() {
             return {
                 pegawaiList: @json($pegawai),
                 selectedPegawaiId: '',

@@ -1,6 +1,6 @@
 # Pola Prompt & Eksekusi Berulang (Skill Templates)
 
-Dokumen ini berisi sekumpulan template instruksi prompt dan pola kerja yang dapat digunakan kembali selama proses pengembangan aplikasi SIPAT untuk menjamin hasil kerja yang konsisten.
+Dokumen ini berisi sekumpulan template instruksi prompt dan pola kerja yang dapat digunakan kembali selama proses pengembangan aplikasi Dont Forget untuk menjamin hasil kerja yang konsisten.
 
 ## 1. Pengujian Kode & Validasi Fitur
 - **Pola**: Jalankan perintah pengujian lokal setiap kali fitur baru ditambahkan atau diubah.
