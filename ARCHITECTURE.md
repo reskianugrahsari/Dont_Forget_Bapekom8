@@ -1,4 +1,4 @@
-# Arsitektur Sistem & Rencana Implementasi: SIPAT
+# Arsitektur Sistem & Rencana Implementasi: Dont Forget
 
 ## Stack Teknologi (Tech Stack)
 - **Backend**: Laravel 11/12/13 (PHP 8.2+) sebagai framework utama yang menyediakan struktur aplikasi, routing, request validation, dan ORM Eloquent.
