@@ -18,7 +18,13 @@ class PengajuanAbsenResource extends Resource
 {
     protected static ?string $model = PengajuanAbsen::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static ?string $navigationLabel = 'Pengajuan Absen';
+
+    protected static ?string $pluralModelLabel = 'Pengajuan Absen';
+
+    protected static ?string $modelLabel = 'Pengajuan Absen';
+
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedDocumentText;
 
     protected static ?string $recordTitleAttribute = 'tanggal_pengajuan';
 

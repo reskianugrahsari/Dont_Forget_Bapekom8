@@ -18,7 +18,13 @@ class PegawaiResource extends Resource
 {
     protected static ?string $model = Pegawai::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static ?string $navigationLabel = 'Pegawai';
+
+    protected static ?string $pluralModelLabel = 'Pegawai';
+
+    protected static ?string $modelLabel = 'Pegawai';
+
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedUsers;
 
     protected static ?string $recordTitleAttribute = 'nama';
 
@@ -35,7 +41,7 @@ class PegawaiResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            RelationManagers\PengajuanRelationManager::class,
         ];
     }
 
