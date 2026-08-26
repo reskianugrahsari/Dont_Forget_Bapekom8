@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dont Forget - Surat Permohonan Absen & Tata Usaha</title>
+    <link rel="manifest" href="{{ route('pwa.manifest') }}">
+    <meta name="theme-color" content="#111827">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <style>
@@ -36,8 +40,12 @@
             <div>
                 <h1 class="text-3xl font-extrabold text-slate-900 tracking-tight">Dont Forget</h1>
                 <p class="text-slate-500 mt-1 font-medium">Sistem Informasi Permohonan Absen & Tata Usaha</p>
+                <p class="text-sm text-slate-400 mt-1">Bisa dipasang ke layar utama sebagai app.</p>
             </div>
-            <div class="mt-4 md:mt-0">
+            <div class="mt-4 md:mt-0 flex gap-3">
+                <button type="button" x-show="canInstallApp" @click="installApp()" class="inline-flex items-center justify-center px-4 py-2 text-sm font-semibold text-slate-900 bg-white border border-slate-200 hover:bg-slate-50 transition rounded-lg shadow-sm">
+                    Install App
+                </button>
                 <a href="/admin" class="inline-flex items-center justify-center px-4 py-2 text-sm font-semibold text-white bg-slate-900 hover:bg-slate-800 transition rounded-lg shadow-sm">
                     Panel Admin
                 </a>
@@ -237,8 +245,23 @@
     </div>
 
     <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('{{ route('pwa.sw') }}');
+            });
+        }
+
+        let deferredPrompt = null;
+
+        window.addEventListener('beforeinstallprompt', (event) => {
+            event.preventDefault();
+            deferredPrompt = event;
+            window.dispatchEvent(new CustomEvent('dont-forget-pwa-available'));
+        });
+
         function dontForgetApp() {
             return {
+                canInstallApp: false,
                 pegawaiList: @json($pegawai),
                 selectedPegawaiId: '',
                 selectedAtasanId: '',
@@ -321,6 +344,15 @@
                         'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'
                     ];
                     return `${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`;
+                },
+                installApp() {
+                    if (!deferredPrompt) return;
+
+                    deferredPrompt.prompt();
+                    deferredPrompt.userChoice.finally(() => {
+                        deferredPrompt = null;
+                        this.canInstallApp = false;
+                    });
                 },
                 submitForm(e) {
                     // Biarkan submit form Laravel POST normal berjalan

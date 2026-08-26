@@ -37,7 +37,8 @@ class PegawaiForm
                     ->label('Bagian'),
                 Select::make('atasan_id')
                     ->relationship('atasan', 'nama')
-                    ->searchable()
+                    ->getOptionLabelFromRecordUsing(fn ($record) => "{$record->nama} - {$record->jabatan}")
+                    ->searchable(['nama', 'jabatan'])
                     ->preload()
                     ->nullable()
                     ->label('Atasan Langsung'),

@@ -16,18 +16,17 @@ class PengajuanAbsenForm
     {
         return $schema
             ->components([
-                TextInput::make('nomor_surat')
-                    ->maxLength(100)
-                    ->label('Nomor Surat'),
                 Select::make('pegawai_id')
                     ->relationship('pegawai', 'nama')
-                    ->searchable()
+                    ->getOptionLabelFromRecordUsing(fn ($record) => "{$record->nama} - {$record->jabatan}")
+                    ->searchable(['nama', 'jabatan'])
                     ->preload()
                     ->required()
                     ->label('Pegawai (Pemohon)'),
                 Select::make('atasan_id')
                     ->relationship('atasan', 'nama')
-                    ->searchable()
+                    ->getOptionLabelFromRecordUsing(fn ($record) => "{$record->nama} - {$record->jabatan}")
+                    ->searchable(['nama', 'jabatan'])
                     ->preload()
                     ->required()
                     ->label('Atasan Penandatangan'),
