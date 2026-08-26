@@ -30,9 +30,6 @@ class PengajuanRelationManager extends RelationManager
         return $table
             ->recordTitleAttribute('tanggal_pengajuan')
             ->columns([
-                TextColumn::make('nomor_surat')
-                    ->searchable()
-                    ->label('Nomor Surat'),
                 TextColumn::make('atasan.nama')
                     ->label('Atasan'),
                 TextColumn::make('jenis_absen')

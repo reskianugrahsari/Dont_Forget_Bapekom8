@@ -7,9 +7,9 @@ use Filament\Widgets\ChartWidget;
 
 class TrendPengajuanChart extends ChartWidget
 {
-    protected static ?int $sort = 3;
+    protected static ?int $sort = 2;
 
-    protected ?string $heading = 'Tren Pengajuan Lupa Absen';
+    protected ?string $heading = 'Distribusi Jenis Pengajuan';
 
     protected function getData(): array
     {
@@ -19,9 +19,11 @@ class TrendPengajuanChart extends ChartWidget
         return [
             'datasets' => [
                 [
-                    'label' => 'Jumlah Lupa Absen',
+                    'label' => 'Pengajuan',
                     'data' => [$masukCount, $pulangCount],
                     'backgroundColor' => ['#f59e0b', '#3b82f6'],
+                    'borderWidth' => 0,
+                    'hoverOffset' => 10,
                 ],
             ],
             'labels' => ['Lupa Absen Masuk', 'Lupa Absen Pulang'],
@@ -30,6 +32,6 @@ class TrendPengajuanChart extends ChartWidget
 
     protected function getType(): string
     {
-        return 'bar';
+        return 'doughnut';
     }
 }

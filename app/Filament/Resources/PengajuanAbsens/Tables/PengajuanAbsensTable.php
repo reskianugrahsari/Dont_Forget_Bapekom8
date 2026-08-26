@@ -17,9 +17,6 @@ class PengajuanAbsensTable
     {
         return $table
             ->columns([
-                TextColumn::make('nomor_surat')
-                    ->searchable()
-                    ->label('Nomor Surat'),
                 TextColumn::make('pegawai.nama')
                     ->searchable()
                     ->sortable()
