@@ -1,0 +1,7 @@
+tunnel: dont-forget
+credentials-file: C:\Users\YourUser\.cloudflared\dont-forget.json
+
+ingress:
+  - hostname: your-domain.com
+    service: http://localhost:8000
+  - service: http_status:404
