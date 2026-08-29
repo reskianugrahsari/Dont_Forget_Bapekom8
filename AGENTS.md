@@ -1,4 +1,4 @@
-# Instruksi Agen: Proyek Dont Forget
+# Instruksi Agen: Proyek DON'T FORGET
 
 ## Standar Pengodean
 - Bahasa: PHP 8.2+, Laravel 11/12/13, Filament v5.

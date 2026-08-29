@@ -28,7 +28,7 @@ class AdminPanelProvider extends PanelProvider
             ->id('admin')
             ->path('admin')
             ->login()
-            ->brandName('Dont Forget')
+            ->brandName("DON'T FORGET")
             ->colors([
                 'primary' => Color::Amber,
             ])

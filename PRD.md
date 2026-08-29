@@ -2,7 +2,7 @@
 
 ## 1. Overview & Document History
 
-* **Nama Produk:** Dont Forget (Sistem Informasi Permohonan Absen & Tata Usaha)
+* **Nama Produk:** DON'T FORGET (Sistem Informasi Permohonan Absen & Tata Usaha)
 * **Versi Dokumen:** 2.0
 * **Status:** Final / Approved for Development
 * **Target Release:** Q3 2026
@@ -155,7 +155,7 @@ CREATE TABLE pengajuan_absen (
 Default konfigurasi database berbasis SQLite:
 
 ```env
-APP_NAME="Dont Forget"
+APP_NAME="DON'T FORGET"
 APP_ENV=local
 APP_KEY=
 APP_DEBUG=true
