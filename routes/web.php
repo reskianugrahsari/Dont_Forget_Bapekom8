@@ -15,8 +15,8 @@ Route::get('/manifest.webmanifest', function () {
     $icon512 = $setting?->icon_512 ? asset('storage/'.$setting->icon_512) : asset('images/pwa/icon-512.png');
 
     return response()->json([
-        'name' => $setting?->app_name ?? 'Dont Forget',
-        'short_name' => $setting?->short_name ?? 'Dont Forget',
+        'name' => $setting?->app_name ?? "DON'T FORGET",
+        'short_name' => $setting?->short_name ?? "DON'T FORGET",
         'description' => $setting?->description ?? 'Sistem pengajuan lupa absen dan tata usaha',
         'start_url' => $setting?->start_url ?? '/',
         'scope' => $setting?->scope ?? '/',

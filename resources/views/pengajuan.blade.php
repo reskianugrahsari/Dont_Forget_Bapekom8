@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dont Forget - Surat Permohonan Absen & Tata Usaha</title>
+    <title>DON'T FORGET - Surat Permohonan Absen & Tata Usaha</title>
     <link rel="manifest" href="{{ route('pwa.manifest') }}">
     <meta name="theme-color" content="#111827">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -38,7 +38,7 @@
     <div class="container mx-auto max-w-7xl p-4 md:p-8 no-print">
         <header class="mb-10 flex flex-col md:flex-row md:items-center md:justify-between border-b pb-6 border-slate-200">
             <div>
-                <h1 class="text-3xl font-extrabold text-slate-900 tracking-tight">Dont Forget</h1>
+                <h1 class="text-3xl font-extrabold text-slate-900 tracking-tight">DON'T FORGET</h1>
                 <p class="text-slate-500 mt-1 font-medium">Sistem Informasi Permohonan Absen & Tata Usaha</p>
                 <p class="text-sm text-slate-400 mt-1">Bisa dipasang ke layar utama sebagai app.</p>
             </div>

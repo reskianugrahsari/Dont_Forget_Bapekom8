@@ -1,6 +1,6 @@
 # Aturan Main & Alur Kerja (Workflow)
 
-Dokumen ini mendefinisikan batas interaksi antara Agen AI dengan Pengguna serta Kriteria Penyelesaian Fitur (Definition of Done) untuk menjaga kualitas pengembangan proyek Dont Forget.
+Dokumen ini mendefinisikan batas interaksi antara Agen AI dengan Pengguna serta Kriteria Penyelesaian Fitur (Definition of Done) untuk menjaga kualitas pengembangan proyek DON'T FORGET.
 
 ## 1. Batas Interaksi & Persetujuan Tindakan
 

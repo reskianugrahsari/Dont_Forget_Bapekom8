@@ -6,7 +6,7 @@
   <img src="https://img.shields.io/badge/PWA-Supported-5A0FC8?style=for-the-badge&logo=pwa&logoColor=white" alt="PWA">
 </p>
 
-<h1 align="center">Dont Forget</h1>
+<h1 align="center">DON'T FORGET</h1>
 
 <p align="center">
   <strong>Sistem Informasi Pengajuan Lupa Absen & Tata Usaha</strong><br>
@@ -137,7 +137,7 @@ Dont_Forget_Bapekom8/
 ### `pwa_settings`
 | Kolom | Tipe | Default |
 |-------|------|---------|
-| `app_name` | string | Dont Forget |
+| `app_name` | string | DON'T FORGET |
 | `theme_color` | string(20) | #111827 |
 | `background_color` | string(20) | #ffffff |
 | `icon_192` | string | /images/pwa/icon-192.png |
