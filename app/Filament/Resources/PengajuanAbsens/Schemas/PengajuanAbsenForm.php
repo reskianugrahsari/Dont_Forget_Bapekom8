@@ -24,7 +24,12 @@ class PengajuanAbsenForm
                     ->required()
                     ->label('Pegawai (Pemohon)'),
                 Select::make('atasan_id')
-                    ->relationship('atasan', 'nama')
+                    ->relationship(
+                        'atasan',
+                        'nama',
+                        fn ($query) => $query->whereIn('jabatan', ['Kepala Balai', 'Kepala Subbag Umum dan Tata Usaha', 'Kepala Seksi Penyelenggaraan'])
+                            ->orWhereIn('nama', ['Widyanto Hendro Saputro, ST, M.Si', 'Wahyuni A, ST, MT', 'Sarnaeni B,SP,M.T'])
+                    )
                     ->getOptionLabelFromRecordUsing(fn ($record) => "{$record->nama} - {$record->jabatan}")
                     ->searchable(['nama', 'jabatan'])
                     ->preload()

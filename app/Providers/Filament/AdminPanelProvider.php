@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Providers\Filament;
 
 use App\Filament\Widgets\StatsOverview;
@@ -27,10 +29,25 @@ class AdminPanelProvider extends PanelProvider
             ->default()
             ->id('admin')
             ->path('admin')
+            ->viteTheme('resources/css/filament/admin/theme.css')
             ->login()
-            ->brandName('Dont Forget')
+            ->brandName("DON'T FORGET")
+            ->brandLogo(fn () => view('filament.components.brand-logo'))
             ->colors([
-                'primary' => Color::Amber,
+                'primary' => [
+                    50 => '#fefce8',
+                    100 => '#fef9c3',
+                    200 => '#fef08a',
+                    300 => '#fde047',
+                    400 => '#facc15',
+                    500 => '#eab308',
+                    600 => '#ca8a04',
+                    700 => '#a16207',
+                    800 => '#854d0e',
+                    900 => '#713f12',
+                    950 => '#422006',
+                ],
+                'gray' => Color::Slate,
             ])
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\Filament\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\Filament\Pages')

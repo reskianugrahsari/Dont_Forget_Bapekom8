@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('pwa_settings', function (Blueprint $table) {
             $table->id();
-            $table->string('app_name')->default('Dont Forget');
-            $table->string('short_name')->default('Dont Forget');
+            $table->string('app_name')->default("DON'T FORGET");
+            $table->string('short_name')->default("DON'T FORGET");
             $table->string('description')->default('Sistem pengajuan lupa absen dan tata usaha');
             $table->string('theme_color', 20)->default('#111827');
             $table->string('background_color', 20)->default('#ffffff');

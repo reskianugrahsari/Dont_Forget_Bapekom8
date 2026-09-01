@@ -1,6 +1,6 @@
 # Pelacak Tugas Proyek (Task Tracker)
 
-Progres pengerjaan fitur dan sistem aplikasi Dont Forget dilacak menggunakan tabel di bawah ini.
+Progres pengerjaan fitur dan sistem aplikasi DON'T FORGET dilacak menggunakan tabel di bawah ini.
 
 | ID Tugas | Deskripsi Tugas | Komponen | Status | Target Penyelesaian |
 |---|---|---|---|---|

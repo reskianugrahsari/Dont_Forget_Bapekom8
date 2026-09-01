@@ -14,8 +14,9 @@ class PegawaiImportSeeder extends Seeder
     public function run(): void
     {
         $csvPath = storage_path('app/import/pegawai.csv');
-        if (!file_exists($csvPath)) {
+        if (! file_exists($csvPath)) {
             $this->command?->error("CSV not found at {$csvPath}");
+
             return;
         }
 
@@ -34,40 +35,44 @@ class PegawaiImportSeeder extends Seeder
         $pegawaiByCsvNo = [];
 
         foreach ($dataRows as $row) {
-            if (count($row) < 8) continue;
+            if (count($row) < 8) {
+                continue;
+            }
             [$no, $nama, $nip, $pangkatGol, $jabatan, , , $atasanNo] = $row;
 
-            if (!trim((string) $nip) || !trim((string) $nama)) continue;
+            if (! trim((string) $nip) || ! trim((string) $nama)) {
+                continue;
+            }
 
             $csvNo = (int) $no;
             $pegawai = Pegawai::create([
-                'nip'         => trim($nip),
-                'nama'        => trim($nama),
+                'nip' => trim($nip),
+                'nama' => trim($nama),
                 'pangkat_gol' => trim($pangkatGol),
-                'jabatan'     => trim($jabatan),
-                'bagian'      => $this->mapBagian($jabatan),
-                'atasan_id'   => null,
+                'jabatan' => trim($jabatan),
+                'bagian' => $this->mapBagian($jabatan),
+                'atasan_id' => null,
             ]);
 
             $pegawaiByCsvNo[$csvNo] = [
-                'model'     => $pegawai,
+                'model' => $pegawai,
                 'atasan_no' => $atasanNo ? (int) $atasanNo : null,
             ];
         }
 
         // Insert Widyanto (Kepala Balai) manually as NO=1 - head of organization
         $kepalaBalai = Pegawai::create([
-            'nip'         => '197406122008121001',
-            'nama'        => 'Widyanto Hendro Saputro, ST, M.Si',
+            'nip' => '197406122008121001',
+            'nama' => 'Widyanto Hendro Saputro, ST, M.Si',
             'pangkat_gol' => 'Pembina / IV A',
-            'jabatan'     => 'Kepala Balai',
-            'bagian'      => 'Pimpinan',
-            'atasan_id'   => null,
+            'jabatan' => 'Kepala Balai',
+            'bagian' => 'Pimpinan',
+            'atasan_id' => null,
         ]);
 
         // Map Widyanto as CSV NO = 1
         $pegawaiByCsvNo[1] = [
-            'model'     => $kepalaBalai,
+            'model' => $kepalaBalai,
             'atasan_no' => 2, // Hasbiah per CSV
         ];
 
@@ -87,7 +92,7 @@ class PegawaiImportSeeder extends Seeder
             DB::statement('PRAGMA foreign_keys = ON;');
         }
 
-        $this->command?->info('Imported ' . count($pegawaiByCsvNo) . ' pegawai (including Widyanto NO=1).');
+        $this->command?->info('Imported '.count($pegawaiByCsvNo).' pegawai (including Widyanto NO=1).');
     }
 
     private function mapBagian(string $jabatan): string
