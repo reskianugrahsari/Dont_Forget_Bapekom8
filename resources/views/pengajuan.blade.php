@@ -13,12 +13,13 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
         body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-family: Tahoma, sans-serif;
         }
         @media print {
             body {
                 background: white;
                 color: black;
+                font-family: Tahoma, sans-serif;
             }
             .no-print {
                 display: none !important;
@@ -26,7 +27,7 @@
             .print-area {
                 width: 210mm;
                 height: 297mm;
-                padding: 40mm 20mm 20mm 20mm; /* Margin naskah dinas 4-2-2-2 cm */
+                padding: 10mm 20mm 20mm 20mm; /* Menempelkan kop surat di atas */
                 margin: 0;
                 border: none;
                 box-shadow: none;
@@ -34,19 +35,35 @@
         }
     </style>
 </head>
-<body class="bg-slate-50 min-h-screen text-slate-800" x-data="dontForgetApp()">
+<body class="bg-white min-h-screen text-slate-800" x-data="dontForgetApp()">
+    <!-- Banner Visual Pengisian -->
+    <div class="w-full bg-[#0a192f] text-white py-8 px-6 rounded-b-3xl shadow-lg mb-8 no-print border-b-4 border-yellow-500">
+        <div class="container mx-auto max-w-7xl flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="text-left">
+                <h1 class="text-3xl font-extrabold tracking-tight text-white">DON'T FORGET</h1>
+                <p class="text-yellow-400 mt-1 font-semibold text-lg">Sistem Informasi Permohonan Lupa Absen & Tata Usaha</p>
+                <p class="text-slate-300 text-sm mt-1">Layanan administrasi cepat, modern, dan ramah pengguna.</p>
+            </div>
+            <!-- Ilustrasi Sederhana -->
+            <div class="hidden md:block">
+                <svg class="w-32 h-32 text-yellow-400 opacity-90" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path>
+                </svg>
+            </div>
+        </div>
+    </div>
+
     <div class="container mx-auto max-w-7xl p-4 md:p-8 no-print">
         <header class="mb-10 flex flex-col md:flex-row md:items-center md:justify-between border-b pb-6 border-slate-200">
             <div>
-                <h1 class="text-3xl font-extrabold text-slate-900 tracking-tight">DON'T FORGET</h1>
-                <p class="text-slate-500 mt-1 font-medium">Sistem Informasi Permohonan Absen & Tata Usaha</p>
-                <p class="text-sm text-slate-400 mt-1">Bisa dipasang ke layar utama sebagai app.</p>
+                <h2 class="text-2xl font-bold text-[#0a192f] tracking-tight">Pengajuan Baru</h2>
+                <p class="text-sm text-slate-500 mt-1">Silakan isi form di bawah untuk membuat surat permohonan.</p>
             </div>
             <div class="mt-4 md:mt-0 flex gap-3">
-                <button type="button" x-show="canInstallApp" @click="installApp()" class="inline-flex items-center justify-center px-4 py-2 text-sm font-semibold text-slate-900 bg-white border border-slate-200 hover:bg-slate-50 transition rounded-lg shadow-sm">
+                <button type="button" x-show="canInstallApp" @click="installApp()" class="inline-flex items-center justify-center px-4 py-2 text-sm font-semibold text-[#0a192f] bg-white border border-slate-200 hover:bg-slate-50 transition rounded-lg shadow-sm">
                     Install App
                 </button>
-                <a href="/admin" class="inline-flex items-center justify-center px-4 py-2 text-sm font-semibold text-white bg-slate-900 hover:bg-slate-800 transition rounded-lg shadow-sm">
+                <a href="/admin" class="inline-flex items-center justify-center px-4 py-2 text-sm font-semibold text-white bg-[#0a192f] hover:bg-slate-800 transition rounded-lg shadow-sm">
                     Panel Admin
                 </a>
             </div>
@@ -102,7 +119,9 @@
                         <select name="atasan_id" class="w-full border border-slate-200 rounded-xl px-4 py-3 bg-slate-50 focus:bg-white focus:ring-2 focus:ring-slate-900 focus:border-slate-900 transition-all outline-none text-slate-900" x-model="selectedAtasanId" @change="updateAtasanData()" required>
                             <option value="">-- Pilih Atasan --</option>
                             <template x-for="item in pegawaiList" :key="item.id">
-                                <option :value="item.id" x-text="item.nama + ' - ' + item.jabatan"></option>
+                                <template x-if="['Kepala Balai', 'Kepala Subbag Umum dan Tata Usaha', 'Kepala Seksi Penyelenggaraan'].includes(item.jabatan) || ['Widyanto Hendro Saputro, ST, M.Si', 'Wahyuni A, ST, MT', 'Sarnaeni B,SP,M.T'].includes(item.nama)">
+                                    <option :value="item.id" x-text="item.nama + ' - ' + item.jabatan"></option>
+                                </template>
                             </template>
                         </select>
                     </div>
@@ -149,8 +168,13 @@
 
             <!-- Live Preview -->
             <div class="lg:col-span-7 bg-slate-200 p-8 rounded-2xl flex justify-center overflow-auto shadow-inner border border-slate-300/50">
-                <div class="bg-white shadow-xl border p-12 text-black w-[210mm] min-h-[297mm] flex flex-col justify-between rounded-md">
+                <div class="bg-white shadow-xl border pt-2 px-12 pb-12 text-black w-[210mm] min-h-[297mm] flex flex-col justify-between rounded-md">
                     <div>
+                        <!-- Header Kop Surat Live Preview -->
+                        <div class="mb-4 -mt-2">
+                            <img src="{{ asset('images/kop_surat.jpg') }}" alt="Kop Surat" class="w-full h-auto">
+                        </div>
+
                         <!-- Judul -->
                         <div class="text-center font-bold text-lg mb-8 uppercase underline decoration-2">
                             Surat Permohonan Izin / Pemberitahuan
@@ -203,6 +227,11 @@
 
     <!-- Cetak Area (Hanya Muncul saat window.print()) -->
     <div class="hidden print:block print-area mx-auto bg-white text-black text-sm">
+        <!-- Header Kop Surat Cetak -->
+        <div class="mb-4 -mt-2">
+            <img src="{{ asset('images/kop_surat.jpg') }}" alt="Kop Surat" class="w-full h-auto">
+        </div>
+
         <div class="text-center font-bold text-xl mb-12 uppercase underline decoration-2">
             Surat Permohonan Izin / Pemberitahuan
         </div>

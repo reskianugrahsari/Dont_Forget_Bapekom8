@@ -3,9 +3,9 @@
 namespace Tests\Feature;
 
 use App\Models\User;
+use Filament\Auth\Pages\Login;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Livewire\Livewire;
-use Filament\Auth\Pages\Login;
 use Tests\TestCase;
 
 class AdminLoginTest extends TestCase
@@ -20,13 +20,13 @@ class AdminLoginTest extends TestCase
     public function test_login_with_correct_credentials(): void
     {
         $user = User::factory()->create([
-            'email'    => 'admin@dontforget.test',
-            'password' => bcrypt('password'),
+            'email' => 'dickymulyadi@gmail.com',
+            'password' => bcrypt('Bapekom8'),
         ]);
 
         Livewire::test(Login::class)
-            ->set('data.email', 'admin@dontforget.test')
-            ->set('data.password', 'password')
+            ->set('data.email', 'dickymulyadi@gmail.com')
+            ->set('data.password', 'Bapekom8')
             ->call('authenticate')
             ->assertHasNoErrors()
             ->assertRedirect();
@@ -37,12 +37,12 @@ class AdminLoginTest extends TestCase
     public function test_login_with_wrong_password_rejected(): void
     {
         User::factory()->create([
-            'email'    => 'admin@dontforget.test',
-            'password' => bcrypt('password'),
+            'email' => 'dickymulyadi@gmail.com',
+            'password' => bcrypt('Bapekom8'),
         ]);
 
         Livewire::test(Login::class)
-            ->set('data.email', 'admin@dontforget.test')
+            ->set('data.email', 'dickymulyadi@gmail.com')
             ->set('data.password', 'wrongpassword')
             ->call('authenticate')
             ->assertHasErrors(['data.email']);

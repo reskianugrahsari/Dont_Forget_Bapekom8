@@ -1,0 +1,107 @@
+@import '../../../../vendor/filament/filament/resources/css/theme.css';
+
+@source '../../../../app/Filament/**/*';
+@source '../../../../resources/views/filament/**/*';
+
+/* ===========================
+   LIGHT THEME — Navy, Yellow, White
+   =========================== */
+
+/* Sidebar: Navy */
+.fi-sidebar {
+    background-color: #0b192c !important;
+}
+
+.fi-sidebar-item-button,
+.fi-sidebar-group-label,
+.fi-sidebar-header,
+.fi-sidebar-item-icon,
+.fi-sidebar-item-label {
+    color: #cbd5e1 !important;
+}
+
+.fi-sidebar-item-button:hover {
+    background-color: rgba(234, 179, 8, 0.15) !important;
+}
+
+.fi-sidebar-item-button:hover .fi-sidebar-item-icon,
+.fi-sidebar-item-button:hover .fi-sidebar-item-label {
+    color: #eab308 !important;
+}
+
+.fi-sidebar-item-button.fi-active {
+    background-color: #eab308 !important;
+}
+
+.fi-sidebar-item-button.fi-active .fi-sidebar-item-icon,
+.fi-sidebar-item-button.fi-active .fi-sidebar-item-label {
+    color: #0b192c !important;
+}
+
+/* Topbar: White + Yellow accent */
+.fi-topbar {
+    background-color: #ffffff !important;
+    border-bottom: 2px solid #eab308 !important;
+}
+
+/* Main content: White */
+.fi-main {
+    background-color: #f8fafc !important;
+}
+
+/* Logo text in sidebar */
+.fi-logo,
+.fi-sidebar .fi-logo {
+    color: #ffffff !important;
+}
+
+/* ===========================
+   DARK THEME — Deep navy, golden accent
+   =========================== */
+
+.dark .fi-sidebar {
+    background-color: #060f1d !important;
+}
+
+.dark .fi-sidebar-item-button,
+.dark .fi-sidebar-group-label,
+.dark .fi-sidebar-header,
+.dark .fi-sidebar-item-icon,
+.dark .fi-sidebar-item-label {
+    color: #94a3b8 !important;
+}
+
+.dark .fi-sidebar-item-button:hover {
+    background-color: rgba(250, 204, 21, 0.1) !important;
+}
+
+.dark .fi-sidebar-item-button:hover .fi-sidebar-item-icon,
+.dark .fi-sidebar-item-button:hover .fi-sidebar-item-label {
+    color: #facc15 !important;
+}
+
+.dark .fi-sidebar-item-button.fi-active {
+    background-color: rgba(250, 204, 21, 0.15) !important;
+}
+
+.dark .fi-sidebar-item-button.fi-active .fi-sidebar-item-icon,
+.dark .fi-sidebar-item-button.fi-active .fi-sidebar-item-label {
+    color: #facc15 !important;
+}
+
+/* Topbar: Dark navy + golden border */
+.dark .fi-topbar {
+    background-color: #0b192c !important;
+    border-bottom: 2px solid #ca8a04 !important;
+}
+
+/* Main content: Dark slate */
+.dark .fi-main {
+    background-color: #0f172a !important;
+}
+
+/* Logo text in sidebar dark */
+.dark .fi-logo,
+.dark .fi-sidebar .fi-logo {
+    color: #f1f5f9 !important;
+}
