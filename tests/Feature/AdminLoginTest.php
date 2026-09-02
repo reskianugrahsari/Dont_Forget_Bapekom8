@@ -20,13 +20,13 @@ class AdminLoginTest extends TestCase
     public function test_login_with_correct_credentials(): void
     {
         $user = User::factory()->create([
-            'email' => 'dickymulyadi@gmail.com',
-            'password' => bcrypt('Bapekom8'),
+            'email' => 'admin@dontforget.test',
+            'password' => bcrypt('secret-password'),
         ]);
 
         Livewire::test(Login::class)
-            ->set('data.email', 'dickymulyadi@gmail.com')
-            ->set('data.password', 'Bapekom8')
+            ->set('data.email', 'admin@dontforget.test')
+            ->set('data.password', 'secret-password')
             ->call('authenticate')
             ->assertHasNoErrors()
             ->assertRedirect();
@@ -37,12 +37,12 @@ class AdminLoginTest extends TestCase
     public function test_login_with_wrong_password_rejected(): void
     {
         User::factory()->create([
-            'email' => 'dickymulyadi@gmail.com',
-            'password' => bcrypt('Bapekom8'),
+            'email' => 'admin@dontforget.test',
+            'password' => bcrypt('secret-password'),
         ]);
 
         Livewire::test(Login::class)
-            ->set('data.email', 'dickymulyadi@gmail.com')
+            ->set('data.email', 'admin@dontforget.test')
             ->set('data.password', 'wrongpassword')
             ->call('authenticate')
             ->assertHasErrors(['data.email']);
